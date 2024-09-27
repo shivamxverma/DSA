@@ -1,0 +1,54 @@
+#include <bits/stdc++.h>
+#define fastIO                    \
+    ios_base::sync_with_stdio(0); \
+    cin.tie(0);
+#define rep(i, a, b) for (int i = (a); i < (b); i++)
+#define repr(i, a, b) for (int i = (a); i >= (b); i--)
+#define printyes cout << "YES\n";
+#define printno cout << "NO\n";
+#define space " "
+using namespace std;
+const int N = 1e7 + 10;
+#define int long long int
+#define vl vector<int>
+#define MOD 1000000007
+#define INF LLONG_MAX
+#define pii pair<int, int>
+int solve(int m, int n)
+{
+    vector<int> prev(m,0);
+    for (int i = 0; i < n; i++)
+    {
+        vector<int> temp(n,0);
+        for (int j = 0; j < m; j++)
+        {
+            if (i == 0 && j == 0)
+            {
+                temp[j] = 1;
+                continue;
+            }
+            int left = 0;
+            if (j > 0)
+            {
+                left = temp[j - 1];
+            }
+            int up = 0;
+            if (i > 0)
+            {
+                up = prev[j];
+            }
+            temp[j] = up + left;
+        }
+        prev = temp;
+    }
+    return prev[n-1];
+}
+signed main()
+{
+    fastIO;
+    int m, n;
+    cin >> m >> n;
+
+    cout << solve(m, n);
+    return 0;
+}
