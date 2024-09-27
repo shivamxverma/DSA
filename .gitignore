@@ -1,4 +1,10 @@
 *.bin
 *.exe
-*.vscode/
-*.cph/
+**/.vscode/
+**/.cph/
+*/.vscode
+*/*/.vscode
+*/*/**/.vscode
+*/.cph
+*/*/.cph
+*/*/**/.cph
